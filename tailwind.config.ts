@@ -13,7 +13,7 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          DEFAULT: "#16a34a", // tailwind green-600
+          DEFAULT: "#16A34A", // tailwind green-600
           foreground: "#ffffff",
         },
         background: "hsl(var(--background))",
