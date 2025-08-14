@@ -9,7 +9,11 @@ export interface PredictSuccess {
 }
 
 export interface PredictUnknown extends PredictSuccess {
-  message: string
+  message: string 
 }
 
 export type PredictResponse = PredictSuccess | PredictUnknown
+
+export function isUnknown(resp: PredictResponse): resp is PredictUnknown {
+  return "message" in resp
+}

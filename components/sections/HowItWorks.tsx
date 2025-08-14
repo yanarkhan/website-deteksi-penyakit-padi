@@ -83,7 +83,6 @@ export default function HowItWorks() {
               <Card className="h-full transition-shadow duration-300 hover:shadow-lg">
                 <CardHeader className="pb-4 text-center">
                   <div className="mx-auto mb-4 w-fit rounded-full bg-brand/10 p-3">
-                    {/* pastikan steps.icon adalah komponen ikon yang valid */}
                     <step.icon className="h-7 w-7 text-brand" />
                   </div>
 

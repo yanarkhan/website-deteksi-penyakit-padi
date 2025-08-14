@@ -1,22 +1,41 @@
-import { PredictResponse } from "./types"
+  import { PredictResponse } from "./types";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL as string
+  export async function predictDisease(
+    file: File,
+    signal?: AbortSignal
+  ): Promise<PredictResponse> {
+    const endpoint = process.env.NEXT_PUBLIC_API_URL;
+    if (!endpoint) {
+      throw new Error(
+        "ENV NEXT_PUBLIC_API_URL tidak terdefinisi. Tambahkan di .env.local"
+      );
+    }
 
-export async function predictImage(file: File, signal?: AbortSignal): Promise<PredictResponse> {
-  const formData = new FormData()
-  formData.append("file", file)
+    const fd = new FormData();
+    fd.append("file", file);
 
-  const res = await fetch(API_URL, {
-    method: "POST",
-    body: formData,
-    signal,
-  })
+    const res = await fetch(endpoint, { method: "POST", body: fd, signal });
 
-  if (!res.ok) {
-    const text = await res.text().catch(() => "")
-    throw new Error(text || `Gagal memanggil API (status ${res.status})`)
+    const text = await res.text();
+
+    let data: unknown;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      throw new Error(
+        res.ok
+          ? "Respons API tidak valid (bukan JSON)."
+          : `Gagal (status ${res.status})`
+      );
+    }
+
+    if (!res.ok) {
+      const msg =
+        (data as { message?: string; error?: string } | undefined)?.message ||
+        (data as { message?: string; error?: string } | undefined)?.error ||
+        `Gagal memanggil API (status ${res.status})`;
+      throw new Error(msg);
+    }
+
+    return data as PredictResponse;
   }
-
-  const data = (await res.json()) as PredictResponse
-  return data
-}
