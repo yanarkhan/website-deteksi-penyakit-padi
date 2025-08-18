@@ -5,13 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Wheat, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const navItems = [
-  { name: "Beranda", href: "/#beranda" },
-  { name: "Cara Kerja", href: "/#cara-kerja" },
-  { name: "Coba Analisis", href: "/#analisis" }, 
-  { name: "Kontak", href: "/#kontak" },
-];
+import { navItems } from "@/lib/constants";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,6 +41,7 @@ export default function Navbar() {
               <Link
                 href={item.href}
                 onClick={() => setIsOpen(false)}
+                prefetch={false}
                 className="px-2 py-1 text-sm font-medium transition-colors hover:text-brand"
               >
                 {item.name}
@@ -63,7 +58,7 @@ export default function Navbar() {
             onClick={() => setIsOpen((v) => !v)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            aria-label="Buka menu"
+            aria-label={isOpen ? "Tutup menu" : "Buka menu"}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -81,8 +76,7 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2 }}
             className="md:hidden"
-            role="dialog"
-            aria-modal="true"
+            aria-label="Menu navigasi seluler"
           >
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="border-t py-2">

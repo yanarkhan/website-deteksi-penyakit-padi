@@ -1,6 +1,13 @@
 export const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 export const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/jpg"]
 
+export const navItems = [
+  { name: "Beranda", href: "/#beranda" },
+  { name: "Cara Kerja", href: "/#cara-kerja" },
+  { name: "Coba Analisis", href: "/#analisis" }, 
+  { name: "Kontak", href: "/#kontak" },
+];
+
 export const DISEASE_TIPS: Record<string, string> = {
   "Hawar Daun Bakteri (Bacterial Blight)":
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Gunakan varietas padi yang tahan dan perhatikan sanitasi lahan.",

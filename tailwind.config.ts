@@ -11,6 +11,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-manrope)"],
+      },
       colors: {
         brand: {
           DEFAULT: "#16A34A", // tailwind green-600
