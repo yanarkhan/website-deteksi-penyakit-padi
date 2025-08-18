@@ -62,7 +62,10 @@ export default function TryAnalysis() {
   };
 
   return (
-    <section id="analisis" className="py-20 bg-background">
+    <section
+      id="coba-analisis"
+      className="py-20 bg-background border-t scroll-mt-16"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div

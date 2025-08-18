@@ -7,9 +7,9 @@ export default function Contact() {
   return (
     <section
       id="kontak"
-      className="bg-muted/20 py-20 border-t"
+      className="bg-muted/20 py-20 border-t scroll-mt-16"
       aria-label="Bagian Kontak"
-    >
+    > 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 md:min-h-[calc(100vh-4rem)] md:flex md:flex-col md:justify-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Wheat, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { navItems } from "@/lib/constants";
+import { NAV_ITEMS } from "@/lib/constants";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +36,7 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <ul className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <li key={item.name}>
               <Link
                 href={item.href}
@@ -81,7 +81,7 @@ export default function Navbar() {
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <div className="border-t py-2">
                 <ul className="space-y-1 py-2">
-                  {navItems.map((item) => (
+                  {NAV_ITEMS.map((item) => (
                     <li key={item.name}>
                       <Link
                         href={item.href}
